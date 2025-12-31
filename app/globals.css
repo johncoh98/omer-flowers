@@ -1,21 +1,43 @@
 @import "tailwindcss";
 
 :root {
+  /* Brand inspired from logo: floral rose + botanical green */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #141414;
+  --primary: #2f7a4a;   /* botanical green */
+  --secondary: #fff4f7; /* soft rose wash */
+  --accent: #e05a8c;    /* floral rose */
+  --muted: #f6f5f2;
+  /* Support tints for gradients */
+  --tint-rose-50: #fff5f8;
+  --tint-rose-100: #ffe6ee;
+  --tint-mint-50: #f3fff7;
+  --tint-mint-100: #e7fff1;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0d0d0c;
+    --foreground: #eceae6;
+    --primary: #7bc796;
+    --secondary: #151213;
+    --accent: #ff88b3;
+    --muted: #141412;
+    --tint-rose-50: #2a2024;
+    --tint-rose-100: #3a2932;
+    --tint-mint-50: #14221a;
+    --tint-mint-100: #183122;
   }
 }
 
@@ -23,4 +45,16 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Subtle reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
