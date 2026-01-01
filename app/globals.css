@@ -1,18 +1,31 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand inspired from logo: floral rose + botanical green */
-  --background: #ffffff;
-  --foreground: #141414;
-  --primary: #2f7a4a;   /* botanical green */
-  --secondary: #fff4f7; /* soft rose wash */
-  --accent: #e05a8c;    /* floral rose */
-  --muted: #f6f5f2;
+  /* Brand palette derived from logo (floral lavender + sage) */
+  --background: #fbf8ff; /* soft lavender wash */
+  --foreground: #1f1a27; /* deep aubergine/charcoal */
+  --primary: #7b6ec7;    /* lavender (dominant brand) */
+  --secondary: #6fa38a;  /* sage green (supporting) */
+  --accent: #8f69d8;     /* orchid (CTA/highlights) */
+  --muted: color-mix(in oklab, var(--primary) 6%, white);
   /* Support tints for gradients */
-  --tint-rose-50: #fff5f8;
-  --tint-rose-100: #ffe6ee;
-  --tint-mint-50: #f3fff7;
-  --tint-mint-100: #e7fff1;
+  --tint-rose-50: color-mix(in oklab, var(--accent) 12%, white);
+  --tint-rose-100: color-mix(in oklab, var(--accent) 20%, white);
+  --tint-mint-50: color-mix(in oklab, var(--secondary) 14%, white);
+  --tint-mint-100: color-mix(in oklab, var(--secondary) 22%, white);
+  /* Semantic aliases */
+  --color-bg: var(--background);
+  --color-text: var(--foreground);
+  --color-border: color-mix(in oklab, var(--color-text) 15%, transparent);
+  /* Brand shades */
+  --primary-50: #f1eefc;
+  --primary-100: #e6e1fa;
+  --primary-700: #6e60b7;
+  --primary-900: #4a3f89;
+  --accent-50: #f4edff;
+  --accent-100: #e8dbff;
+  /* Footer should be clearly darker for contrast with white text */
+  --footer-bg: #2c245d;
 }
 
 @theme inline {
@@ -28,22 +41,25 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0d0d0c;
-    --foreground: #eceae6;
-    --primary: #7bc796;
-    --secondary: #151213;
-    --accent: #ff88b3;
-    --muted: #141412;
-    --tint-rose-50: #2a2024;
-    --tint-rose-100: #3a2932;
-    --tint-mint-50: #14221a;
-    --tint-mint-100: #183122;
+    --background: #0f0a16;
+    --foreground: #eceaf4;
+    --primary: #a99df1;
+    --secondary: #8cc7ad;
+    --accent: #b69af1;
+    --muted: #15121e;
+    --tint-rose-50: color-mix(in oklab, var(--accent) 18%, #0f0a16);
+    --tint-rose-100: color-mix(in oklab, var(--accent) 24%, #0f0a16);
+    --tint-mint-50: color-mix(in oklab, var(--secondary) 18%, #0f0a16);
+    --tint-mint-100: color-mix(in oklab, var(--secondary) 24%, #0f0a16);
+    --color-bg: var(--background);
+    --color-text: var(--foreground);
+    --color-border: color-mix(in oklab, var(--color-text) 18%, transparent);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -57,4 +73,118 @@ body {
 .reveal-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+/* ---------- Design System Primitives ---------- */
+/* Container */
+.container {
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  max-width: 80rem; /* ~1280px */
+}
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: 2rem;
+  }
+}
+
+/* Sections spacing */
+.section {
+  padding-block: 3rem;
+}
+@media (min-width: 1024px) {
+  .section {
+    padding-block: 4rem;
+  }
+}
+
+/* Cards */
+.card {
+  border-radius: 1rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+/* Typography */
+.heading-1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+.heading-2 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+.subtle {
+  color: color-mix(in oklab, var(--color-text) 65%, transparent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  transition: box-shadow 150ms, transform 200ms;
+}
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn-primary {
+  color: white;
+  background: var(--color-accent);
+}
+.btn-primary:hover {
+  box-shadow: 0 8px 18px color-mix(in oklab, var(--color-accent) 25%, transparent);
+}
+.btn-outline {
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  background: transparent;
+}
+.btn-outline:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+  background: color-mix(in oklab, var(--color-secondary) 60%, transparent);
+}
+
+/* Images */
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* RTL niceties */
+html[dir="rtl"] .text-balance {
+  text-wrap: balance;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--color-accent) 40%, transparent);
+  outline-offset: 2px;
+}
+
+/* Section alternates and helpers */
+.section-alt {
+  background: color-mix(in oklab, var(--color-secondary) 60%, transparent);
+}
+.border-subtle {
+  border-color: var(--color-border) !important;
+}
+.bg-tint {
+  background: color-mix(in oklab, var(--color-secondary) 50%, transparent);
 }

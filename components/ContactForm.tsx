@@ -55,7 +55,7 @@ export default function ContactForm() {
 	}
 
 	return (
-		<section id="contact" className="bg-white dark:bg-black">
+		<section id="contact" className="bg-[var(--tint-rose-50)]">
 			<div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
 				<div className="mx-auto max-w-2xl">
 					<h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">

@@ -1,12 +1,22 @@
 import Hero from "@/components/Hero";
+import BouquetCarousel from "@/components/BouquetCarousel";
+import BestSellers from "@/components/BestSellers";
+import HowItWorks from "@/components/HowItWorks";
+import Trust from "@/components/Trust";
+import Reviews from "@/components/Reviews";
+import CTASection from "@/components/CTASection";
 import ContactForm from "@/components/ContactForm";
-import Showcase from "@/components/Showcase";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       <Hero />
-      <Showcase />
+      <BouquetCarousel />
+      <BestSellers />
+      <HowItWorks />
+      <Trust />
+      <Reviews />
+      <CTASection />
       <ContactForm />
     </main>
   );

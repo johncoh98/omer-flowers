@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Heebo, Geist_Mono } from "next/font/google";
+import { Assistant, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
 import Script from "next/script";
+import { siteConfig } from "@/lib/siteConfig";
 
-const geistSans = Heebo({
+const geistSans = Assistant({
   variable: "--font-geist-sans",
   subsets: ["hebrew"],
-  weight: ["300", "400", "500", "700", "900"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -31,21 +32,21 @@ export default function RootLayout({
   const business = {
     "@context": "https://schema.org",
     "@type": "Florist",
-    name: "פרחי עומר",
+    name: siteConfig.storeName,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "רחוב הראשי 10",
-      addressLocality: "תל אביב",
-      addressCountry: "IL",
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressCountry: siteConfig.address.countryCode,
     },
-    telephone: "+972-50-123-4567",
-    url: "https://example.com",
+    telephone: siteConfig.phone.e164,
+    url: siteConfig.siteUrl,
     openingHours: [
       "Su-Th 09:00-19:00",
       "Fr 09:00-14:00",
     ],
     sameAs: [
-      "https://wa.me/972501234567"
+      `https://wa.me/${siteConfig.whatsappNumber}`
     ]
   };
 

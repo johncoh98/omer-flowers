@@ -1,6 +1,7 @@
 import React from "react";
 import ContactForm from "@/components/ContactForm";
 import ContactDetails from "@/components/ContactDetails";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
   title: "צור קשר | פרחי עומר",
@@ -14,6 +15,7 @@ export default function ContactPage() {
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
         נשמח לשוחח, לייעץ ולהרכיב לכם זר מושלם.
       </p>
+      <div className="mt-4"><WhatsAppButton /></div>
       <div className="mt-8 space-y-10">
         <ContactDetails />
         <ContactForm />

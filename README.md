@@ -34,3 +34,17 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## How to edit client info
+
+- Edit store details in `lib/siteConfig.ts`:
+  - `storeName`, `siteUrl`, `address`, `phone`, `whatsappNumber`, `hours`, `deliveryPrices`
+- These values power the header CTA, footer, contact page, delivery pricing and JSON‑LD in `app/layout.tsx`.
+- WhatsApp buttons will automatically use `whatsappNumber`.
+
+## How to change products
+
+- Edit `data/products.ts`. Each product has:
+  - `id`, `name`, `price`, `category` (`"זרים" | "צמחים" | "מתנות"`), `imageUrl`
+- The Catalog page (`/catalog`) supports category filters and price sorting automatically.
+- The Home “Best sellers” section shows the first 4–6 items from this list.

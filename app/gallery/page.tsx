@@ -1,4 +1,5 @@
 import React from "react";
+import GalleryMasonry from "@/components/GalleryMasonry";
 
 const images = [
   "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop",
@@ -18,18 +19,10 @@ export default function GalleryPage() {
   return (
     <main className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
       <h1 className="text-3xl font-extrabold tracking-tight text-foreground">גלריה</h1>
-      <p className="mt-2 text-zinc-600 dark:text-zinc-400">התגלהו בעיצובים ובמבחר הזרעים שלנו.</p>
-      <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {images.map((src, i) => (
-          <div key={i} className="overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900">
-            <img src={src} alt={`גלריה ${i + 1}`} className="h-full w-full object-cover" loading="lazy" />
-          </div>
-        ))}
+      <p className="mt-2 subtle">התגלו בעיצובים ובמבחר הזרים שלנו.</p>
+      <div className="mt-8">
+        <GalleryMasonry images={images} />
       </div>
     </main>
   );
 }
-
-
-
-
