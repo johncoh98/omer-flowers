@@ -11,7 +11,7 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-      <h1 className="text-3xl font-extrabold tracking-tight text-foreground">צור קשר</h1>
+      <h1 className="section-title">צור קשר</h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">
         נשמח לשוחח, לייעץ ולהרכיב לכם זר מושלם.
       </p>

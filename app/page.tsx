@@ -1,6 +1,5 @@
 import Hero from "@/components/Hero";
 import BouquetCarousel from "@/components/BouquetCarousel";
-import BestSellers from "@/components/BestSellers";
 import HowItWorks from "@/components/HowItWorks";
 import Trust from "@/components/Trust";
 import Reviews from "@/components/Reviews";
@@ -12,7 +11,6 @@ export default function Home() {
     <main className="min-h-screen bg-background">
       <Hero />
       <BouquetCarousel />
-      <BestSellers />
       <HowItWorks />
       <Trust />
       <Reviews />

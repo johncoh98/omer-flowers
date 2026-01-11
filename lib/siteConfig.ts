@@ -2,18 +2,18 @@ export const siteConfig = {
 	storeName: "פרחי עומר",
 	siteUrl: "https://example.com",
 	address: {
-		street: "רחוב הראשי 10",
-		city: "תל אביב",
+		street: "אחוזה 100",
+		city: "רעננה",
 		countryCode: "IL",
 	},
 	phone: {
-		display: "050-123-4567",
-		e164: "+972501234567",
+		display: "052-677-5475",
+		e164: "+972526775475",
 	},
-	whatsappNumber: "972501234567", // E.164 without '+'
+	whatsappNumber: "972526775475", // E.164 without '+'
 	hours: {
-		weekday: "א׳–ה׳: 09:00–19:00",
-		friday: "ו׳: 09:00–14:00",
+		weekday: "א׳–ה׳: 09:30–19:00",
+		friday: "ו׳: 08:30 – חצי שעה לפני כניסת שבת",
 		saturday: "שבת: סגור",
 	},
 	deliveryPrices: [

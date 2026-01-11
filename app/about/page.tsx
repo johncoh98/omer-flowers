@@ -8,7 +8,7 @@ export const metadata = {
 export default function AboutPage() {
   return (
     <main className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
-      <h1 className="heading-2">הסיפור שלנו</h1>
+      <h1 className="section-title">הסיפור שלנו</h1>
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="prose prose-zinc dark:prose-invert lg:col-span-2">
           <h2>מי אנחנו</h2>

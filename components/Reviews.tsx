@@ -21,7 +21,7 @@ export default function Reviews() {
 	return (
 		<section className="section">
 			<div className="container">
-				<h2 className="heading-2">לקוחות מספרים</h2>
+				<h2 className="section-title">לקוחות מספרים</h2>
 				<div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
 					{reviews.map((r, i) => (
 						<figure key={i} className="card p-6">

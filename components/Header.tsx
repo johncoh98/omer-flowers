@@ -4,13 +4,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import WhatsAppButton from "./WhatsAppButton";
+import CallButton from "./CallButton";
 
 const nav = [
   { href: "/", label: "בית" },
-  { href: "/catalog", label: "קטלוג" },
   { href: "/gallery", label: "גלריה" },
-  { href: "/about", label: "עלינו" },
-  { href: "/delivery", label: "משלוחים" },
   { href: "/contact", label: "צור קשר" },
 ];
 
@@ -64,7 +62,8 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <CallButton size="sm" />
           <WhatsAppButton size="sm" />
         </div>
       </div>
@@ -81,7 +80,8 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-2">
+            <div className="pt-2 grid grid-cols-2 gap-2">
+              <CallButton size="md" className="w-full" />
               <WhatsAppButton size="md" className="w-full" />
             </div>
           </nav>

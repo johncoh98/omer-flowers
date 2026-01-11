@@ -37,6 +37,7 @@
   --color-muted: var(--muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -112,14 +113,32 @@ body {
 
 /* Typography */
 .heading-1 {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, -apple-system, Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
 }
 .heading-2 {
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, -apple-system, Arial, sans-serif;
   font-weight: 800;
-  letter-spacing: -0.02em;
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  letter-spacing: -0.01em;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+.section-title {
+  font-family: var(--font-display), var(--font-geist-sans), system-ui, -apple-system, Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  text-align: center;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 0.6rem auto 0;
+  border-radius: 9999px;
+  background: var(--color-accent);
 }
 .subtle {
   color: color-mix(in oklab, var(--color-text) 65%, transparent);

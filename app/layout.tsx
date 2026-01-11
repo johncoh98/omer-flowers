@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Assistant, Geist_Mono } from "next/font/google";
+import { Assistant, Noto_Serif_Hebrew, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,6 +11,13 @@ const geistSans = Assistant({
   variable: "--font-geist-sans",
   subsets: ["hebrew"],
   weight: ["300", "400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const display = Noto_Serif_Hebrew({
+  variable: "--font-display",
+  subsets: ["hebrew"],
+  weight: ["400", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -41,10 +48,7 @@ export default function RootLayout({
     },
     telephone: siteConfig.phone.e164,
     url: siteConfig.siteUrl,
-    openingHours: [
-      "Su-Th 09:00-19:00",
-      "Fr 09:00-14:00",
-    ],
+    // openingHours intentionally omitted; hours vary on Fridays relative to Shabbat
     sameAs: [
       `https://wa.me/${siteConfig.whatsappNumber}`
     ]
@@ -53,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${display.variable} antialiased`}
       >
         <Header />
         {children}

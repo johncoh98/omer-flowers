@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import { products } from "@/data/products";
-import WhatsAppButton from "./WhatsAppButton";
+
+
+const publicSlides = ["/2.png","/3.png","/4.png","/5.png","/6.png","/7.png","/8.png","/9.png","/10.png","/11.png","/12.png","/13.png","/1.png"];
 
 export default function BouquetCarousel() {
-	const slides = useMemo(() => products.filter((p) => p.category === "זרים"), []);
+	const slides = useMemo(() => publicSlides.filter(Boolean), []);
 	const [index, setIndex] = useState(0);
 	const total = slides.length;
+
 
 	useEffect(() => {
 		if (total <= 1) return;
@@ -36,30 +38,23 @@ export default function BouquetCarousel() {
 				</div>
 
 				<div className="relative overflow-hidden rounded-2xl">
-					<div
-						className="flex transition-transform duration-500 will-change-transform"
-						style={{ transform: `translateX(-${index * 100}%)` }}
-					>
-						{slides.map((p) => {
-							const message = `שלום פרחי עומר, אשמח להזמין: ${p.name} (${p.price.toLocaleString("he-IL")} ₪). כתובת למשלוח: `;
-							return (
-								<article key={p.id} className="w-full shrink-0">
-									<div className="relative w-full aspect-[5/3] overflow-hidden rounded-2xl card">
-										<img src={p.imageUrl} alt={p.name} className="h-full w-full object-cover" loading="lazy" />
-										<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
-										<div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-											<div>
-												<h3 className="text-base font-semibold text-white drop-shadow-sm">{p.name}</h3>
-												<p className="mt-0.5 text-sm font-semibold text-[var(--color-accent)] drop-shadow-[0_1px_0_rgba(0,0,0,0.4)]">
-													{p.price.toLocaleString("he-IL")} ₪
-												</p>
-											</div>
-											<WhatsAppButton size="sm" message={message} />
-										</div>
-									</div>
-								</article>
-							);
-						})}
+					<div className="relative aspect-[5/3] w-full">
+						{slides.map((src, i) => (
+							<img
+								key={src + i}
+								src={src}
+								alt={`זר ${i + 1}`}
+								className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${i === index ? "opacity-100" : "opacity-0"}`}
+								loading={i <= 1 ? "eager" : "lazy"}
+								decoding="async"
+								onError={(e) => {
+									const img = e.currentTarget as HTMLImageElement;
+									if (img.src.endsWith("/2.png")) return;
+									img.src = "/2.png";
+								}}
+							/>
+						))}
+						<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
 					</div>
 				</div>
 
