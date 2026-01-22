@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Assistant, Noto_Serif_Hebrew, Geist_Mono } from "next/font/google";
+import { Heebo, Rubik, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,17 +7,17 @@ import StickyWhatsApp from "@/components/StickyWhatsApp";
 import Script from "next/script";
 import { siteConfig } from "@/lib/siteConfig";
 
-const geistSans = Assistant({
+const heeboSans = Heebo({
   variable: "--font-geist-sans",
   subsets: ["hebrew"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
-const display = Noto_Serif_Hebrew({
+const display = Rubik({
   variable: "--font-display",
   subsets: ["hebrew"],
-  weight: ["400", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -57,7 +57,7 @@ export default function RootLayout({
   return (
     <html lang="he" dir="rtl">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${display.variable} antialiased`}
+        className={`${heeboSans.variable} ${geistMono.variable} ${display.variable} antialiased`}
       >
         <Header />
         {children}

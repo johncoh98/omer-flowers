@@ -27,6 +27,7 @@ export default function CatalogView() {
 				<div>
 					<h1 className="text-3xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary via-secondary to-accent">קטלוג</h1>
 					<p className="mt-2 subtle">מבחר זרים, צמחים ומתנות לכל אירוע.</p>
+					<p className="mt-1 text-sm subtle">יש גם צמחי תבלין, וכן צמחים נוספים במלאי.</p>
 				</div>
 				<div className="flex gap-2">
 					{categories.map((c) => (

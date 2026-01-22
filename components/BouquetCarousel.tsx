@@ -6,7 +6,11 @@ import React, { useEffect, useMemo, useState } from "react";
 const publicSlides = ["/2.png","/3.png","/4.png","/5.png","/6.png","/7.png","/8.png","/9.png","/10.png","/11.png","/12.png","/13.png","/1.png"];
 
 export default function BouquetCarousel() {
-	const slides = useMemo(() => publicSlides.filter(Boolean), []);
+	const slides = useMemo(() => {
+		const list = publicSlides.filter(Boolean);
+		const keep = Math.max(0, list.length - 3);
+		return list.slice(0, keep);
+	}, []);
 	const [index, setIndex] = useState(0);
 	const total = slides.length;
 
@@ -37,14 +41,15 @@ export default function BouquetCarousel() {
 					</div>
 				</div>
 
-				<div className="relative overflow-hidden rounded-2xl">
-					<div className="relative aspect-[5/3] w-full">
+				<div className="relative rounded-3xl p-[2px] bg-gradient-to-br from-[var(--tint-rose-100)] to-[var(--tint-rose-200)] dark:from-white/10 dark:to-white/5 mx-auto max-w-2xl sm:max-w-3xl lg:max-w-4xl">
+					<div className="relative overflow-hidden rounded-[calc(1.5rem-2px)] border border-[rgba(46,125,50,0.12)] dark:border-[rgba(255,255,255,0.08)] shadow-sm shadow-[inset_0_0_0_1px_rgba(255,255,255,0.35)]">
+						<div className="relative w-full bg-[var(--muted)] aspect-[4/5] sm:aspect-[16/9] lg:aspect-[5/3]">
 						{slides.map((src, i) => (
 							<img
 								key={src + i}
 								src={src}
 								alt={`זר ${i + 1}`}
-								className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${i === index ? "opacity-100" : "opacity-0"}`}
+								className={`absolute inset-0 h-full w-full object-cover object-center transition-[opacity,transform] duration-500 ${i < 4 ? "scale-[1.12] sm:scale-[1.08] lg:scale-[1.06]" : ""} ${i === index ? "opacity-100" : "opacity-0"}`}
 								loading={i <= 1 ? "eager" : "lazy"}
 								decoding="async"
 								onError={(e) => {
@@ -54,7 +59,8 @@ export default function BouquetCarousel() {
 								}}
 							/>
 						))}
-						<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
+							<div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
+						</div>
 					</div>
 				</div>
 
